@@ -1,0 +1,14 @@
+cb62a56 - ffccites, 3 minutes ago : Update README.md
+afd227a - ffccites, 17 hours ago : Conduct code review and optimize code quality
+cc16605 - ffccites, 33 hours ago : Implement Hammer pickup and scoring system
+f6be483 - ffccites, 2 days ago : Implement collision detection for game over conditions
+80aebba - ffccites, 2 days ago : Add DonkeyKong and Barrel entities with physics
+0362579 - ffccites, 2 days ago : Implement ladders and player climbing mechanics
+062dd90 - ffccites, 2 days ago : Implement player jump mechanics
+56a59eb - ffccites, 2 days ago : standardize center-based coordinate system
+90bb6f1 - ffccites, 2 days ago : Implement gravity system and platform landing
+512e06a - ffccites, 3 days ago : Add Platform class and basic collision detection framework
+c52619c - ffccites, 3 days ago : Implement game state management and basic screen framework
+b57cca5 - ffccites, 3 days ago : Implement player left/right movement, boundary checks, and sprite flipping
+4fb8812 - ffccites, 3 days ago : Create Entity base class and Player, render player at start location
+6e2771c - ffccites, 10 days ago : Initial Commit
