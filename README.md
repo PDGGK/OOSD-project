@@ -17,7 +17,7 @@ All gameplay is built on the Bagel 2D engine, organised with clean object-orient
 - 🧠 AI-driven monkeys (patrolling + banana-throwing variants) and a projectile system for both player and enemies.
 - 🧰 Robust architecture: entity hierarchy, behavioural interfaces, reusable gameplay framework and configuration-driven level data.
 - 📊 Comprehensive scoring: jump/destroy rewards, time bonus, health HUD and per-level score carry-over.
-- 🌐 Portfolio-ready journal website (`project-journal-website/`) with bilingual copy, theme toggle and animated storytelling.
+- 🌐 Portfolio-ready development journal (`project-journal-website/`) with bilingual copy, theme toggle and animated storytelling.
 
 ## Controls
 
@@ -51,7 +51,7 @@ Bagel’s native libraries are copied into `target/dependency/` on build; the bu
 | `dazd1-project-1/DonkeyKong_Skeleton/` | Project 1 submission – foundational gameplay loop. |
 | `dazd1-project-1/DonkeyKongsolution/` | Earlier solution snapshot kept for reference. |
 | `dazd1-project-2/DonkeyKong_Skeleton/` | Project 2 submission – advanced multi-level implementation. |
-| `dazd1-project-2/project-journal-website/` | Interactive journal site (open `index.html` locally). |
+| `dazd1-project-2/project-journal-website/` | Interactive development journal (open `index.html` locally). |
 | `project_report.md` | 600+ line deep dive into design decisions, physics, AI and testing. |
 | `1488802.txt` | Sample Git commit log generated for the submission rubric. |
 | `Archive.zip` | Packaged artefact produced for final hand-in. |
@@ -84,7 +84,7 @@ Bagel’s native libraries are copied into `target/dependency/` on build; the bu
 
 ## Supporting Material
 
-- **Project Journal Website** — Launch `project-journal-website/index.html` for a curated narrative of the build, including translations, theme toggle and animated code snippets.
+- **Project Development Journal** — Open `project-journal-website/index.html` to review the interactive dev log with timelines, translations, theme toggle and animated code snippets.
 - **`project_report.md`** — Detailed write-up that can double as appendix material for portfolios or cover letters.
 - **Git Histories** — Both project folders include a formatted commit log (`1488802.txt`) generated from the submission repo.
 
@@ -116,7 +116,7 @@ Bagel’s native libraries are copied into `target/dependency/` on build; the bu
 - 🧠 敌人 AI 完整体：普通猴子巡逻，智能猴子定时丢香蕉；玩家可拾取光束枪进行射击。
 - 🧰 架构稳固：实体继承体系 + 行为接口（Movable/Collidable/Destroyable/Weapon）+ 通用 `GameplayScreen` 框架。
 - 📊 计分体系完善：跳桶/砸桶/击杀得分、时间加成、HUD 显示以及跨关卡分数继承。
-- 🌐 `project-journal-website/` 包含中英双语互动站点，附带暗黑/亮色主题与时间线叙事，可直接作为简历素材。
+- 🌐 `project-journal-website/` 包含中英双语的互动开发日志，附带暗黑/亮色主题与时间线叙事，可直接作为简历素材。
 
 ## 操作方式
 
@@ -150,7 +150,7 @@ java -Djava.library.path=target/dependency -cp target/classes:target/dependency/
 | `dazd1-project-1/DonkeyKong_Skeleton/` | 第一阶段提交，涵盖基础玩法实现。 |
 | `dazd1-project-1/DonkeyKongsolution/` | 早期参考实现，便于回顾迭代历程。 |
 | `dazd1-project-2/DonkeyKong_Skeleton/` | 第二阶段提交，多关卡与 AI 扩展版。 |
-| `dazd1-project-2/project-journal-website/` | 开发日志网站，双语、响应式动画展示。 |
+| `dazd1-project-2/project-journal-website/` | 开发日志（HTML 形式，支持双语与动画展示）。 |
 | `project_report.md` | 600+ 行的设计/物理/AI/测试详解，可直接引用到申请或面试材料。 |
 | `1488802.txt` | 评审要求的 Git 提交记录示例文件。 |
 | `Archive.zip` | 最终打包交付版本。 |
@@ -183,7 +183,7 @@ java -Djava.library.path=target/dependency -cp target/classes:target/dependency/
 
 ## 展示素材
 
-- **项目日志网站**：打开 `project-journal-website/index.html`，快速浏览项目故事、时间线、代码片段与可视化数据。
+- **项目开发日志**：打开 `project-journal-website/index.html`，快速浏览项目故事、时间线、代码片段与可视化数据。
 - **`project_report.md`**：深入的技术报告，可做附录或求职材料。
 - **Git 历史**：两个项目目录均保留格式化的提交日志，体现迭代节奏与质量。
 
@@ -195,5 +195,4 @@ java -Djava.library.path=target/dependency -cp target/classes:target/dependency/
 
 ---
 
-_如果需要根据不同职位定制介绍，可结合 `project_report.md` 与日志网站的内容，快速生成中英文版本的简历/作品集描述。_
-
+_如果需要根据不同职位定制介绍，可结合 `project_report.md` 与开发日志的内容，快速生成中英文版本的简历/作品集描述。_
