@@ -94,9 +94,6 @@ Bagel’s native libraries are copied into `target/dependency/` on build; the bu
 - Demonstrated mastery of object-oriented patterns, state machines and real-time collision detection.
 - Polished presentation assets (journal website + report) ready for recruiters or MSc applications.
 
----
-
-_需要中文自我介绍？请查看 `project_report.md` 或项目日志网站中的中文翻译，就可以快速把这个项目写进简历。_
 
 ---
 
