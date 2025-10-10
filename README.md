@@ -195,4 +195,4 @@ java -Djava.library.path=target/dependency -cp target/classes:target/dependency/
 
 ---
 
-_如果需要根据不同职位定制介绍，可结合 `project_report.md` 与开发日志的内容，快速生成中英文版本的简历/作品集描述。_
+
