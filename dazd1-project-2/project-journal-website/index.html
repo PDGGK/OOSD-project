@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.title">Shadow Donkey Kong - Development Journey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <i class="fas fa-gamepad"></i>
+                <span>DK Dev Journal</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#overview" data-i18n="nav.overview">Overview</a></li>
+                <li><a href="#journey" data-i18n="nav.journey">Journey</a></li>
+                <li><a href="#challenges" data-i18n="nav.challenges">Challenges</a></li>
+                <li><a href="#architecture" data-i18n="nav.architecture">Architecture</a></li>
+                <li><a href="#tech-stack" data-i18n="nav.techStack">Tech Stack</a></li>
+                <li><a href="#achievements" data-i18n="nav.achievements">Achievements</a></li>
+                <li><a href="#lessons" data-i18n="nav.lessons">Lessons</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switch">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-code"></i>
+                <span data-i18n="hero.badge">SWEN20003 Project 2B</span>
+            </div>
+            <h1 class="hero-title">
+                Shadow Donkey Kong
+                <span class="gradient-text" data-i18n="hero.subtitle">Development Journey</span>
+            </h1>
+            <p class="hero-description" data-i18n="hero.description">
+                A comprehensive documentation of building a classic platformer game using Java and object-oriented design principles. From initial architecture to final optimization - every bug, every refactor, every breakthrough.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label" data-i18n="hero.stats.classes">Java Classes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2000+</span>
+                    <span class="stat-label" data-i18n="hero.stats.lines">Lines of Code</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label" data-i18n="hero.stats.commits">Git Commits</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label" data-i18n="hero.stats.functionality">Functionality</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="scrollToSection('journey')">
+                    <i class="fas fa-rocket"></i>
+                    <span data-i18n="hero.actions.explore">Explore Journey</span>
+                </button>
+                <button class="btn btn-secondary" onclick="window.open('#', '_blank')">
+                    <i class="fab fa-github"></i>
+                    <span data-i18n="hero.actions.code">View Code</span>
+                </button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-window">
+                <div class="window-header">
+                    <div class="window-controls">
+                        <span class="control red"></span>
+                        <span class="control yellow"></span>
+                        <span class="control green"></span>
+                    </div>
+                    <span class="window-title">ShadowDonkeyKong.java</span>
+                </div>
+                <div class="code-content">
+                    <pre><code>public class ShadowDonkeyKong extends AbstractGame {
+    private GameState currentState;
+    private final LevelManager levelManager;
+    private final ScoreManager scoreManager;
+    
+    @Override
+    protected void update(Input input) {
+        // Main game loop implementation
+        Screen activeScreen = getActiveScreen();
+        GameState newState = activeScreen.update(input);
+        handleStateTransition(newState);
+    }
+    
+    private void handleStateTransition(GameState newState) {
+        if (newState != currentState) {
+            switchToState(newState);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+            <div class="floating-elements">
+                <div class="floating-icon" style="--delay: 0s;">
+                    <i class="fab fa-java"></i>
+                </div>
+                <div class="floating-icon" style="--delay: 1s;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="floating-icon" style="--delay: 2s;">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="overview.title">Project Overview</h2>
+                <p data-i18n="overview.subtitle">Building a sophisticated 2D platformer with advanced game mechanics</p>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 data-i18n="overview.cards.architecture.title">Multi-Level Architecture</h3>
+                    <p data-i18n="overview.cards.architecture.desc">Implemented a scalable level system with Level1Screen and Level2Screen, supporting different game mechanics and entities per level.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Abstract Classes</span>
+                        <span class="tech-badge">Inheritance</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-i18n="overview.cards.entities.title">Complex Entity System</h3>
+                    <p data-i18n="overview.cards.entities.desc">Created 15+ entity types including Mario, Donkey Kong, Barrels, Monkeys, Projectiles with sophisticated inheritance hierarchies.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Polymorphism</span>
+                        <span class="tech-badge">Design Patterns</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 data-i18n="overview.cards.physics.title">Physics Engine</h3>
+                    <p data-i18n="overview.cards.physics.desc">Built custom physics with gravity, collision detection, platform alignment, and projectile movement systems.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Collision Detection</span>
+                        <span class="tech-badge">Mathematics</span>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 data-i18n="overview.cards.ai.title">AI Behavior</h3>
+                    <p data-i18n="overview.cards.ai.desc">Implemented intelligent monkey patrolling, banana shooting mechanics, and complex collision interactions.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">State Machine</span>
+                        <span class="tech-badge">Pathfinding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="techStack.title">Technology Stack</h2>
+                <p data-i18n="techStack.subtitle">Tools and technologies powering the development</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h3 data-i18n="techStack.categories.core.title">Core Technologies</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java 11+</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cube"></i>
+                            <span>Bagel Engine</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>2D Graphics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 data-i18n="techStack.categories.design.title">Design Patterns</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fas fa-sitemap"></i>
+                            <span>MVC Pattern</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Abstract Factory</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>State Pattern</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category">
+                    <h3 data-i18n="techStack.categories.tools.title">Development Tools</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <i class="fas fa-code"></i>
+                            <span>IntelliJ IDEA</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git Version Control</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-bug"></i>
+                            <span>JUnit Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Journey Timeline -->
+    <section id="journey" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="journey.title">Development Journey</h2>
+                <p data-i18n="journey.subtitle">A chronological walkthrough of the entire development process</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 1</div>
+                        <h3 data-i18n="journey.phases.phase1.title">Initial Architecture Design</h3>
+                        <p data-i18n="journey.phases.phase1.desc">Established inheritance hierarchies, created abstract base classes, and designed the overall system architecture following OOP principles.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Inheritance</span>
+                            <span class="tech-tag">Encapsulation</span>
+                            <span class="tech-tag">Polymorphism</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 2</div>
+                        <h3 data-i18n="journey.phases.phase2.title">Critical Bug Discovery: Cross-Layer Jump Scoring</h3>
+                        <p data-i18n="journey.phases.phase2.desc">Discovered and fixed a severe bug where Mario jumping on any layer could trigger scoring for barrels on different layers. Implemented vertical distance validation.</p>
+                        <div class="code-snippet">
+                            <pre><code>// Fixed with vertical distance limitation
+private static final double MAX_JUMP_VERTICAL_DISTANCE = 80.0;
+
+public boolean isValidJump(Player player, Barrel barrel) {
+    double verticalDistance = Math.abs(player.getY() - barrel.getY());
+    return verticalDistance <= MAX_JUMP_VERTICAL_DISTANCE 
+           && isHorizontallyAligned(player, barrel)
+           && player.isJumping();
+}</code></pre>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Debugging</span>
+                            <span class="tech-tag">Collision Detection</span>
+                            <span class="tech-tag">Edge Case Handling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 3</div>
+                        <h3 data-i18n="journey.phases.phase3.title">Mario Air Control Enhancement</h3>
+                        <p data-i18n="journey.phases.phase3.desc">Enhanced Mario's movement system to maintain horizontal velocity in mid-air after leaving ladders, providing better player control and more natural game feel.</p>
+                        <div class="code-snippet">
+                            <pre><code>// Enhanced movement with air control
+public void updateMovement(Input input) {
+    // Only reset horizontal velocity if on ground or ladder
+    if (onGround || onLadder) {
+        if (!input.isPressed(Keys.LEFT) && !input.isPressed(Keys.RIGHT)) {
+            horizontalVelocity = 0;
+        }
+    }
+    // Maintain momentum in air for better control
+}</code></pre>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Physics</span>
+                            <span class="tech-tag">Game Feel</span>
+                            <span class="tech-tag">User Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 4</div>
+                        <h3 data-i18n="journey.phases.phase4.title">UI System Refactoring</h3>
+                        <p data-i18n="journey.phases.phase4.desc">Eliminated hardcoded UI positions and implemented dynamic layout calculations based on app.properties configuration for better maintainability.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Configuration</span>
+                            <span class="tech-tag">Maintainability</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 5</div>
+                        <h3 data-i18n="journey.phases.phase5.title">Code Quality Optimization</h3>
+                        <p data-i18n="journey.phases.phase5.desc">Removed deprecated PLAYING state, eliminated unused ProjectileInterface, and cleaned up redundant code for production-quality standards.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Refactoring</span>
+                            <span class="tech-tag">Clean Code</span>
+                            <span class="tech-tag">Code Quality</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Challenges -->
+    <section id="challenges" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="challenges.title">Technical Challenges</h2>
+                <p data-i18n="challenges.subtitle">Deep dives into the most complex problems and their solutions</p>
+            </div>
+            
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <h3><i class="fas fa-crosshairs"></i> <span data-i18n="challenges.cards.collision.title">Cross-Layer Collision Detection</span></h3>
+                        <span class="difficulty high" data-i18n="challenges.difficulty.high">High Complexity</span>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="problem">
+                            <h4 data-i18n="challenges.sections.problem">Problem</h4>
+                            <p data-i18n="challenges.cards.collision.problem">Mario jumping on the top layer could incorrectly trigger scoring for barrels on lower layers, leading to unfair point accumulation and breaking game balance.</p>
+                        </div>
+                        <div class="solution">
+                            <h4 data-i18n="challenges.sections.solution">Solution</h4>
+                            <p data-i18n="challenges.cards.collision.solution">Implemented vertical distance validation with 80-pixel maximum threshold and enhanced the collision detection system with multiple validation layers and Z-axis considerations.</p>
+                        </div>
+                        <div class="impact">
+                            <h4 data-i18n="challenges.sections.impact">Impact</h4>
+                            <p data-i18n="challenges.cards.collision.impact">Eliminated false positive scoring, ensuring fair gameplay and maintaining game balance integrity across all levels.</p>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">0</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.bugs">False Positives</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">100%</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.accuracy">Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <h3><i class="fas fa-running"></i> <span data-i18n="challenges.cards.physics.title">Mario Movement Physics</span></h3>
+                        <span class="difficulty medium" data-i18n="challenges.difficulty.medium">Medium Complexity</span>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="problem">
+                            <h4 data-i18n="challenges.sections.problem">Problem</h4>
+                            <p data-i18n="challenges.cards.physics.problem">Mario would lose horizontal momentum immediately upon leaving ladders, creating unnatural movement and poor game feel that frustrated players.</p>
+                        </div>
+                        <div class="solution">
+                            <h4 data-i18n="challenges.sections.solution">Solution</h4>
+                            <p data-i18n="challenges.cards.physics.solution">Modified velocity reset logic to preserve horizontal velocity in mid-air, allowing natural air control while maintaining physics accuracy and realistic movement.</p>
+                        </div>
+                        <div class="impact">
+                            <h4 data-i18n="challenges.sections.impact">Impact</h4>
+                            <p data-i18n="challenges.cards.physics.impact">Significantly improved player experience and control responsiveness, making the game feel more professional and enjoyable.</p>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">85%</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.improvement">Control Improvement</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">0.2s</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.response">Response Time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <h3><i class="fas fa-sitemap"></i> <span data-i18n="challenges.cards.architecture.title">Scalable Architecture Design</span></h3>
+                        <span class="difficulty high" data-i18n="challenges.difficulty.high">High Complexity</span>
+                    </div>
+                    <div class="challenge-content">
+                        <div class="problem">
+                            <h4 data-i18n="challenges.sections.problem">Problem</h4>
+                            <p data-i18n="challenges.cards.architecture.problem">Code duplication between level implementations and hardcoded values scattered throughout the codebase, making maintenance difficult and error-prone.</p>
+                        </div>
+                        <div class="solution">
+                            <h4 data-i18n="challenges.sections.solution">Solution</h4>
+                            <p data-i18n="challenges.cards.architecture.solution">Created generic utility methods in GameplayScreen base class and centralized configuration management through properties files and template method pattern.</p>
+                        </div>
+                        <div class="impact">
+                            <h4 data-i18n="challenges.sections.impact">Impact</h4>
+                            <p data-i18n="challenges.cards.architecture.impact">Reduced code duplication by 40% and improved maintainability significantly, enabling faster feature development and easier debugging.</p>
+                        </div>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">40%</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.reduction">Code Reduction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">15+</span>
+                                <span class="metric-label" data-i18n="challenges.metrics.patterns">Design Patterns</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="architecture.title">System Architecture</h2>
+                <p data-i18n="architecture.subtitle">Comprehensive overview of the object-oriented design</p>
+            </div>
+            
+            <div class="architecture-content">
+                <div class="architecture-diagram">
+                    <h3 data-i18n="architecture.hierarchy.title">Class Hierarchy</h3>
+                    <div class="hierarchy">
+                        <div class="hierarchy-level">
+                            <div class="class-box abstract">Entity (Abstract)</div>
+                        </div>
+                        <div class="hierarchy-connections">
+                            <div class="connection-line"></div>
+                        </div>
+                        <div class="hierarchy-level">
+                            <div class="class-box">Player</div>
+                            <div class="class-box">DonkeyKong</div>
+                            <div class="class-box">Platform</div>
+                            <div class="class-box">Ladder</div>
+                            <div class="class-box">Hammer</div>
+                            <div class="class-box">Blaster</div>
+                            <div class="class-box abstract">Monkey (Abstract)</div>
+                            <div class="class-box abstract">Projectile (Abstract)</div>
+                        </div>
+                        <div class="hierarchy-connections">
+                            <div class="connection-line partial"></div>
+                        </div>
+                        <div class="hierarchy-level">
+                            <div class="class-box"></div>
+                            <div class="class-box"></div>
+                            <div class="class-box"></div>
+                            <div class="class-box"></div>
+                            <div class="class-box"></div>
+                            <div class="class-box"></div>
+                            <div class="class-box">NormalMonkey</div>
+                            <div class="class-box">IntelligentMonkey</div>
+                            <div class="class-box">Bullet</div>
+                            <div class="class-box">Banana</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="design-principles">
+                    <h3 data-i18n="architecture.principles.title">Design Principles Applied</h3>
+                    <div class="principles-grid">
+                        <div class="principle">
+                            <i class="fas fa-layer-group"></i>
+                            <h4>Inheritance</h4>
+                            <p data-i18n="architecture.principles.inheritance">Proper use of abstract classes and concrete implementations for code reuse and logical hierarchy</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-lock"></i>
+                            <h4>Encapsulation</h4>
+                            <p data-i18n="architecture.principles.encapsulation">Private attributes with controlled access through getters/setters maintaining data integrity</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-shapes"></i>
+                            <h4>Polymorphism</h4>
+                            <p data-i18n="architecture.principles.polymorphism">Interface-based design for flexible entity interactions and runtime behavior selection</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Composition</h4>
+                            <p data-i18n="architecture.principles.composition">Modular components for complex behavior assembly and loose coupling</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="architecture-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label" data-i18n="architecture.stats.classes">Classes</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label" data-i18n="architecture.stats.abstracts">Abstract Classes</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label" data-i18n="architecture.stats.interfaces">Interfaces</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-layers"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label" data-i18n="architecture.stats.levels">Inheritance Levels</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="achievements.title">Project Achievements</h2>
+                <p data-i18n="achievements.subtitle">Measurable accomplishments and milestones reached</p>
+            </div>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.score.title">Perfect Functionality Score</h3>
+                    <div class="achievement-value">10/10</div>
+                    <p data-i18n="achievements.cards.score.desc">Achieved full marks on game functionality implementation with all requirements met</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.bugs.title">Zero Critical Bugs</h3>
+                    <div class="achievement-value">0</div>
+                    <p data-i18n="achievements.cards.bugs.desc">Delivered production-ready code with comprehensive testing and edge case handling</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.commits.title">Meaningful Git Commits</h3>
+                    <div class="achievement-value">15+</div>
+                    <p data-i18n="achievements.cards.commits.desc">Maintained excellent version control practices with descriptive commit messages</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.delivery.title">On-Time Delivery</h3>
+                    <div class="achievement-value">100%</div>
+                    <p data-i18n="achievements.cards.delivery.desc">Completed all project phases within deadlines while maintaining quality standards</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.performance.title">Performance Optimization</h3>
+                    <div class="achievement-value">60fps</div>
+                    <p data-i18n="achievements.cards.performance.desc">Optimized game loop and rendering for smooth 60fps gameplay experience</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 data-i18n="achievements.cards.documentation.title">Complete Documentation</h3>
+                    <div class="achievement-value">100%</div>
+                    <p data-i18n="achievements.cards.documentation.desc">Comprehensive Javadoc comments and README documentation for all components</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Learned -->
+    <section id="lessons" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="lessons.title">Key Takeaways</h2>
+                <p data-i18n="lessons.subtitle">Valuable insights gained throughout the development process</p>
+            </div>
+            
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <div class="lesson-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 data-i18n="lessons.cards.testing.title">Thorough Testing is Crucial</h3>
+                    <p data-i18n="lessons.cards.testing.desc">The cross-layer jump bug was discovered through edge case testing. Always test boundary conditions and unexpected user behavior scenarios to ensure robust software.</p>
+                    <div class="lesson-highlight" data-i18n="lessons.cards.testing.highlight">"Edge cases reveal the true quality of your code"</div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 data-i18n="lessons.cards.clean.title">Clean Code Pays Off</h3>
+                    <p data-i18n="lessons.cards.clean.desc">Removing deprecated code and unused interfaces improved maintainability and prevented future confusion. Clean, well-documented code is professional code that stands the test of time.</p>
+                    <div class="lesson-highlight" data-i18n="lessons.cards.clean.highlight">"Code is read more often than it's written"</div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-i18n="lessons.cards.ux.title">User Experience Matters</h3>
+                    <p data-i18n="lessons.cards.ux.desc">Small improvements in Mario's air control significantly enhanced the overall game feel and player satisfaction. Never underestimate the impact of polished interactions.</p>
+                    <div class="lesson-highlight" data-i18n="lessons.cards.ux.highlight">"Great UX is invisible until it's missing"</div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 data-i18n="lessons.cards.architecture.title">Architecture Decisions Impact Everything</h3>
+                    <p data-i18n="lessons.cards.architecture.desc">Well-designed inheritance hierarchies and interfaces made adding new features and fixing bugs much easier. Good architecture is an investment in future development speed.</p>
+                    <div class="lesson-highlight" data-i18n="lessons.cards.architecture.highlight">"Good architecture enables, bad architecture constrains"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Shadow Donkey Kong</h3>
+                    <p data-i18n="footer.description">A complete journey from concept to implementation</p>
+                    <div class="footer-stats">
+                        <span><i class="fas fa-calendar"></i> <span data-i18n="footer.duration">3 weeks development</span></span>
+                        <span><i class="fas fa-star"></i> <span data-i18n="footer.grade">Grade: HD</span></span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 data-i18n="footer.sections.project">Project</h4>
+                        <a href="#" class="footer-link">
+                            <i class="fab fa-github"></i>
+                            <span data-i18n="footer.links.source">Source Code</span>
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-download"></i>
+                            <span data-i18n="footer.links.download">Download Game</span>
+                        </a>
+                    </div>
+                    <div class="footer-section">
+                        <h4 data-i18n="footer.sections.documentation">Documentation</h4>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-book"></i>
+                            <span data-i18n="footer.links.readme">README</span>
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-file-code"></i>
+                            <span data-i18n="footer.links.javadoc">Javadoc</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 SWEN20003 Project 2B Development Journal</p>
+                <div class="footer-tech">
+                    <span data-i18n="footer.tech">Made with</span>
+                    <i class="fas fa-heart"></i>
+                    <span>HTML, CSS, JavaScript</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

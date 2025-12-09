@@ -1,0 +1,30 @@
+# Maven build directory
+*/target/
+**/target/
+
+# IDE configurations
+**/.vscode/
+**/.idea/
+*.iml
+*.iws
+*.ipr
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+DonkeyKong_Skeleton/.DS_Store
+DonkeyKong_Skeleton/requirement.md
+DonkeyKong_Skeleton/requirementC.md
+DonkeyKong_Skeleton/run.sh
+form.md
+plan.md

@@ -1,0 +1,22 @@
+a5ddbf4 - ffccites, 24 seconds ago : Remove deprecated PLAYING state and unused ProjectileInterface
+16ab46c - ffccites, 39 minutes ago : Remove hardcoded UI positions and implement dynamic layout calculations
+a76b35f - ffccites, 2 hours ago : Implement vertical distance limits for barrel jump scoring
+91cbc38 - ffccites, 2 hours ago : Update README.md
+b481233 - ffccites, 2 hours ago : refine details and fix minor bugs after final check
+e80f08f - ffccites, 4 hours ago : avoid repeated score when player jumps over barrel
+60f45c5 - ffccites, 4 hours ago : Modify interface naming conflicts
+4ba6255 - ffccites, 4 hours ago : Improve encapsulation and add project documentation
+b7640a9 - ffccites, 15 hours ago : separate base score from time bonus between levels
+139b895 - ffccites, 17 hours ago : Implement game timer and complete win/lose logic
+02e5dc3 - ffccites, 18 hours ago : Complete Level2Screen game logic and fix bug
+2c3eabb - ffccites, 18 hours ago : Implement Blaster and extend Player with shooting mechanics
+0fb1e36 - ffccites, 19 hours ago : Implement Projectile abstract class and Bullet
+df6152b - ffccites, 19 hours ago : Implement Monkey abstract class and NormalMonkey
+bc25d25 - ffccites, 19 hours ago : Update DonkeyKong with health system
+1674b32 - ffccites, 20 hours ago : Create basic Level2Screen framework
+c6a9d9f - ffccites, 20 hours ago : Create Level1Screen implementation
+5f8fa2e - ffccites, 21 hours ago : Refactor GameplayScreen to abstract base class
+decc60b - ffccites, 22 hours ago : Upgrade core architecture to support multiple levels
+294c488 - ffccites, 23 hours ago : Refactor: Extract and apply 5 interfaces for better modularity
+e1d7545 - ffccites, 24 hours ago : use new res
+2e73a5b - ffccites, 26 hours ago : Initial Commit

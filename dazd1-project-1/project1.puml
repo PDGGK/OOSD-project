@@ -1,0 +1,273 @@
+@startuml DonkeyKong Project 1
+
+/' 全局设置 '/
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+skinparam packageStyle rectangle
+
+/' ========= 1. 实体层次结构 ========= '/
+
+abstract class Entity {
+  # x: double
+  # y: double
+  # image: Image
+  + draw(): void
+  + {abstract} update(): void
+  + getBoundingBox(): Rectangle
+  + getX(): double
+  + getY(): double
+  + getWidth(): double
+  + getHeight(): double
+  + setX(x: double): void
+  + setY(y: double): void
+  + getTopLeftX(): double
+  + getTopLeftY(): double
+}
+
+class Player extends Entity {
+  - RIGHT_IMAGE: Image {static}
+  - LEFT_IMAGE: Image {static}
+  - HAMMER_RIGHT_IMAGE: Image {static}
+  - HAMMER_LEFT_IMAGE: Image {static}
+  - MOVE_SPEED: double {static}
+  - CLIMB_SPEED: double {static}
+  - GRAVITY: double {static}
+  - TERMINAL_VELOCITY: double {static}
+  - facingRight: boolean
+  - onGround: boolean
+  - onLadder: boolean
+  - verticalVelocity: double
+  - hasHammer: boolean
+  - currentLadder: Ladder
+  - previousY: double
+  + update(): void
+  + handleInput(input: Input, windowWidth: int, windowHeight: int): void
+  + startClimbing(ladder: Ladder): void
+  + stopClimbing(): void
+  + setOnGround(onGround: boolean): void
+  + isOnGround(): boolean
+  + isOnLadder(): boolean
+  + getCurrentLadder(): Ladder
+  + getVerticalVelocity(): double
+  + setVerticalVelocity(verticalVelocity: double): void
+  + getPreviousY(): double
+  + hasHammer(): boolean
+  + collectHammer(): void
+}
+
+class DonkeyKong extends Entity {
+  - DONKEY_KONG_IMAGE: Image {static}
+  - GRAVITY: double {static}
+  - TERMINAL_VELOCITY: double {static}
+  - verticalVelocity: double
+  - onGround: boolean
+  + update(): void
+  + setOnGround(onGround: boolean): void
+  + isOnGround(): boolean
+  + setVerticalVelocity(verticalVelocity: double): void
+  + getVerticalVelocity(): double
+}
+
+class Platform extends Entity {
+  - PLATFORM_IMAGE: Image {static}
+  - COLLISION_TOLERANCE: double {static}
+  + update(): void
+  + isCollidingFromTop(entity: Entity): boolean
+  + isWithinHorizontalBounds(entity: Entity): boolean
+  + overlaps(entity: Entity): boolean
+  + placeEntityOnTop(entity: Entity): void
+}
+
+class Ladder extends Entity {
+  - LADDER_IMAGE: Image {static}
+  - GRAVITY: double {static}
+  - TERMINAL_VELOCITY: double {static}
+  - verticalVelocity: double
+  - onGround: boolean
+  + update(): void
+  + canPlayerClimb(player: Player): boolean
+  + isPlayerAtTopOfLadder(player: Player): boolean
+  + isPlayerAtBottomOfLadder(player: Player): boolean
+  + setOnGround(onGround: boolean): void
+  + isOnGround(): boolean
+  + setVerticalVelocity(verticalVelocity: double): void
+}
+
+class Barrel extends Entity {
+  - BARREL_IMAGE: Image {static}
+  - GRAVITY: double {static}
+  - TERMINAL_VELOCITY: double {static}
+  - verticalVelocity: double
+  - onGround: boolean
+  - destroyed: boolean
+  + update(): void
+  + setOnGround(onGround: boolean): void
+  + isOnGround(): boolean
+  + getVerticalVelocity(): double
+  + setVerticalVelocity(verticalVelocity: double): void
+  + destroy(): void
+  + isDestroyed(): boolean
+  + draw(): void
+}
+
+class Hammer extends Entity {
+  - HAMMER_IMAGE: Image {static}
+  - collected: boolean
+  + update(): void
+  + isCollected(): boolean
+  + collect(): void
+  + draw(): void
+}
+
+/' ========= 2. 屏幕管理类 ========= '/
+
+interface Screen {
+  + update(input: Input): GameState
+  + draw(): void
+}
+
+class TitleScreen implements Screen {
+  - TITLE: String
+  - START_PROMPT: String
+  - titleFont: Font
+  - promptFont: Font
+  - titleX: int
+  - titleY: int
+  - promptY: int
+  - windowWidth: int
+  - backgroundImage: Image
+  + update(input: Input): GameState
+  + draw(): void
+}
+
+class GameplayScreen implements Screen {
+  - player: Player
+  - windowWidth: int
+  - windowHeight: int
+  - scoreFont: Font
+  - scoreX: int
+  - scoreY: int
+  - timeY: int
+  - currentFrame: int
+  - maxFrames: int
+  - backgroundImage: Image
+  - platforms: List<Platform>
+  - ladders: List<Ladder>
+  - barrels: List<Barrel>
+  - donkeyKong: DonkeyKong
+  - hammer: Hammer
+  - scoreManager: ScoreManager
+  - lastJumpDirections: Map<Barrel, Integer>
+  - JUMP_COOLDOWN: int {static}
+  - barrelJumpStatuses: Map<Barrel, BarrelJumpInfo>
+  + update(input: Input): GameState
+  + draw(): void
+  - initializePlatforms(props: Properties): void
+  - initializeLadders(props: Properties): void
+  - initializeDonkeyKong(props: Properties): void
+  - initializeBarrels(props: Properties): void
+  - initializeHammer(props: Properties): void
+  - correctInitialPositions(): void
+  - checkPlatformCollisions(): void
+  - checkLadderPlatformCollisions(): void
+  - checkPlayerLadderInteractions(input: Input): void
+  - checkBarrelPlatformCollisions(): void
+  - checkDonkeyKongPlatformCollisions(): void
+  - checkHammerCollision(): void
+  - checkBarrelJumps(): void
+  - checkPlayerCollisions(): GameState
+  + getScore(): int
+  + getRemainingTime(): int
+}
+
+class BarrelJumpInfo {
+  ~ isAboveBarrel: boolean
+  ~ hasJumpedOver: boolean
+  ~ cooldownTimer: int
+  ~ lastPlayerY: double
+  ~ side: int
+}
+
+class GameOverScreen implements Screen {
+  - statusFont: Font
+  - scoreFont: Font
+  - statusY: int
+  - scoreY: int
+  - winMessage: String
+  - loseMessage: String
+  - continueMessage: String
+  - continueY: int
+  - result: GameState
+  - finalScore: int
+  - backgroundImage: Image
+  - messageProps: Properties
+  + update(input: Input): GameState
+  + draw(): void
+}
+
+/' ========= 3. 游戏管理类 ========= '/
+
+enum GameState {
+  TITLE
+  PLAYING
+  GAME_OVER_WIN
+  GAME_OVER_LOSE
+}
+
+class ScoreManager {
+  - SCORE_X: double {static}
+  - SCORE_Y: double {static}
+  - BARREL_JUMP_SCORE: int {static}
+  - BARREL_DESTROY_SCORE: int {static}
+  - TIME_BONUS_MULTIPLIER: int {static}
+  - score: int
+  - scoreFont: Font
+  - timeBonus: boolean
+  - timeBonusScore: int
+  + addScore(points: int): void
+  + getScore(): int
+  + addTimeBonus(remainingSeconds: int): void
+  + getTimeBonus(): int
+  + draw(): void
+  + reset(): void
+}
+
+/' ========= 4. 工具和主类 ========= '/
+
+class IOUtils {
+  + readPropertiesFile(configFile: String): Properties {static}
+}
+
+class ShadowDonkeyKong {
+  - GAME_PROPS: Properties
+  - MESSAGE_PROPS: Properties
+  - currentState: GameState
+  - titleScreen: TitleScreen
+  - gameplayScreen: GameplayScreen
+  - activeScreen: Screen
+  + update(input: Input): void
+  - handleStateTransition(newState: GameState): void
+  + main(args: String[]): void {static}
+}
+
+/' ========= 5. 关系定义（带多重性） ========= '/
+
+GameplayScreen "1" --> "1" Player : "manages"
+GameplayScreen "1" --> "*" Platform : "contains"
+GameplayScreen "1" --> "*" Ladder : "contains"
+GameplayScreen "1" --> "*" Barrel : "contains"
+GameplayScreen "1" --> "1" DonkeyKong : "manages"
+GameplayScreen "1" --> "1" Hammer : "manages"
+GameplayScreen "1" --> "1" ScoreManager : "uses"
+GameplayScreen "1" --> "*" BarrelJumpInfo : "creates"
+
+ShadowDonkeyKong --> "1" GameState : "tracks"
+ShadowDonkeyKong "1" --> "1" TitleScreen : "manages"
+ShadowDonkeyKong "1" --> "1" GameplayScreen : "manages"
+ShadowDonkeyKong "1" --> "1" Screen : "controls"
+
+Player "1" --> "0..1" Ladder : "interacts with"
+
+GameOverScreen --> "1" GameState : "references"
+
+@enduml

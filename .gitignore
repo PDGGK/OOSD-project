@@ -1,2 +1,5 @@
 
 gitlab/dazd1-tutorials/
+
+# Ignore all markdown files
+*.md
